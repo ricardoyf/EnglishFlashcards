@@ -1,4 +1,4 @@
-const CACHE='english-flashcards-pink-v8';
+const CACHE='english-flashcards-pink-v9';
 const FILES=['./','./index.html','./manifest.webmanifest','./icon-pink-v2.svg','./pink-theme.css','./category-menu.js'];
 
 self.addEventListener('install',e=>{
@@ -16,7 +16,7 @@ self.addEventListener('activate',e=>{
 
 self.addEventListener('fetch',e=>{
   const url=new URL(e.request.url);
-  const isAppHtml=e.request.mode==='navigate' || url.pathname.endsWith('/unit1/') || url.pathname.endsWith('/unit1/index.html');
+  const isAppHtml=e.request.mode==='navigate' || url.pathname.endsWith('/EnglishFlashcards/') || url.pathname.endsWith('/EnglishFlashcards/index.html');
 
   if(isAppHtml){
     e.respondWith((async()=>{
@@ -45,7 +45,7 @@ self.addEventListener('fetch',e=>{
     return;
   }
 
-  if(url.pathname.endsWith('/unit1/pink-theme.css') || url.pathname.endsWith('/unit1/manifest.webmanifest') || url.pathname.endsWith('/unit1/icon-pink-v2.svg') || url.pathname.endsWith('/unit1/category-menu.js')){
+  if(url.pathname.endsWith('/EnglishFlashcards/pink-theme.css') || url.pathname.endsWith('/EnglishFlashcards/manifest.webmanifest') || url.pathname.endsWith('/EnglishFlashcards/icon-pink-v2.svg') || url.pathname.endsWith('/EnglishFlashcards/category-menu.js')){
     e.respondWith(fetch(e.request,{cache:'no-store'}).catch(()=>caches.match(e.request)));
     return;
   }
